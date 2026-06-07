@@ -5,11 +5,7 @@ FROM ubuntu:16.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN sed -i \
-      -e 's|http://archive.ubuntu.com/ubuntu/|http://old-releases.ubuntu.com/ubuntu/|g' \
-      -e 's|http://security.ubuntu.com/ubuntu/|http://old-releases.ubuntu.com/ubuntu/|g' \
-      /etc/apt/sources.list \
-    && apt-get -qq update \
+RUN apt-get -qq update \
     && apt-get install -y --no-install-recommends --reinstall \
        ca-certificates \
        git \
