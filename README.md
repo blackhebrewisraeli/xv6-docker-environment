@@ -1,4 +1,5 @@
 # xv6 Docker Environment
+![Docker Build](https://github.com/blackhebrewisraeli/xv6-docker-environment/actions/workflows/docker-build.yml/badge.svg)
 
 This repository provides a Docker-based development environment for building and running the MIT xv6 operating system.
 
