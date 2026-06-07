@@ -1,0 +1,30 @@
+# Docker environment for building and running xv6.
+# Course context: Operating Systems 20594 — Maman 02.
+
+FROM ubuntu:16.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN sed -i \
+      -e 's|http://archive.ubuntu.com/ubuntu/|http://old-releases.ubuntu.com/ubuntu/|g' \
+      -e 's|http://security.ubuntu.com/ubuntu/|http://old-releases.ubuntu.com/ubuntu/|g' \
+      /etc/apt/sources.list \
+    && apt-get -qq update \
+    && apt-get install -y --no-install-recommends --reinstall \
+       ca-certificates \
+       git \
+       gcc-multilib \
+       make \
+       qemu-system \
+    && git clone https://github.com/mit-pdos/xv6-public.git /xv6 \
+    && chmod +x /xv6/*.pl \
+    && apt-get purge -qq git \
+    && apt-get autoremove --purge -qq \
+    && apt-get clean -qq \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/* /var/tmp/* \
+    && rm -rf /usr/share/man/* /usr/share/doc/*
+
+WORKDIR /xv6
+
+CMD ["/bin/bash"]

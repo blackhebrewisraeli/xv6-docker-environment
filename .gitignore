@@ -1,0 +1,37 @@
+# Build artifacts
+*.o
+*.out
+*.bin
+*.img
+*.iso
+*.log
+
+# xv6 generated files
+xv6-public/
+fs.img
+kernel
+kernelmemfs
+mkfs
+user/_*
+*.asm
+*.sym
+
+# Archives and submitted documents
+*.zip
+*.tar
+*.tar.gz
+*.doc
+*.docx
+*.pdf
+
+# macOS / editor files
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+tmp/
+temp/
+.cache/

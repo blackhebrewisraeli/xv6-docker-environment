@@ -1,0 +1,26 @@
+name: Docker Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t xv6-maman02 .
+
+      - name: Validate xv6 directory
+        run: docker run --rm xv6-maman02 test -d /xv6
+
+      - name: Validate xv6 Makefile
+        run: docker run --rm xv6-maman02 test -f /xv6/Makefile
